@@ -24,7 +24,6 @@ const swaggerOptions = {
 };
 
 const server = new Hapi.Server({
-  host: 'localhost',
   port: process.env.PORT
 });
 
