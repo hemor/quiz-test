@@ -55,6 +55,18 @@ async function init() {
       }
     ]);
 
+    // Register static files routes
+    server.route({
+      method: 'GET',
+      path: '/profile-pictures/{file*}',
+      handler: {
+        directory: {
+          path: path.join(__dirname, '../pictures'),
+          index: false
+        }
+      }
+    });
+
     // Register routes
     fs.readdirSync(routesPath)
       .filter(file => (fs.lstatSync(path.resolve(routesPath, file)).isFile()) && (file.indexOf('.') !== 0) && (file.slice(-3) === '.js'))
